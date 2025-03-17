@@ -26,7 +26,7 @@ API Integrations for Merchants & Partners
 
 ## 3. High-Level Architecture
 
-# 3.1 Client Side (Frontend & Merchant Integration)
+### 3.1 Client Side (Frontend & Merchant Integration)
 
 Web, Mobile Apps, POS terminals integrate with Payment Gateway via APIs
 
@@ -34,7 +34,7 @@ Payment SDKs for different platforms (Android, iOS, Web)
 
 User authentication via OAuth2 / OpenID Connect (OIDC)
 
-# 3.2 Payment Gateway Backend Services
+### 3.2 Payment Gateway Backend Services
 
 Transaction Processing Service
 
