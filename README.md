@@ -80,14 +80,14 @@ Allows merchants to manage disputed transactions
 
 Works with banks for resolution
 
-# 4. Infrastructure & Deployment
+## 4. Infrastructure & Deployment
 
-# 4.1 API Gateway & Load Balancer
+### 4.1 API Gateway & Load Balancer
 Manages API rate limits, request authentication, and routing
 
 Load balances traffic to backend services
 
-# 4.2 Database Layer
+### 4.2 Database Layer
 
 Relational DB (PostgreSQL/MySQL) for transactions & settlements
 
@@ -95,7 +95,7 @@ NoSQL DB (MongoDB, Redis) for session management & caching
 
 Data Lake (HDFS/S3) for storing historical transaction data
 
-# 4.3 Security & Compliance
+### 4.3 Security & Compliance
 
 Encryption (AES-256, TLS 1.3) for secure data transmission
 
@@ -103,13 +103,13 @@ Tokenization & Vault Storage for sensitive card data
 
 PCI-DSS, GDPR, ISO 27001 compliance
 
-# 4.4 Event-Driven Architecture
+### 4.4 Event-Driven Architecture
 
 Kafka for real-time event streaming (transaction events, notifications)
 
 Elasticsearch + Kibana for log analysis and monitoring
 
-# 4.5 Scalability & Reliability
+### 4.5 Scalability & Reliability
 
 Microservices-based architecture for scalability
 
@@ -117,7 +117,7 @@ Kubernetes (K8s) + Docker for containerized deployment
 
 Auto-scaling based on traffic patterns
 
-# 5. Workflow: Payment Processing Flow
+## 5. Workflow: Payment Processing Flow
 
 Customer initiates a payment → Enters card details, selects UPI, or uses saved cards
 
@@ -131,7 +131,7 @@ Bank sends response (Success/Failure) → Payment Gateway notifies Merchant
 
 Merchant fulfills order if successful → Updates customer via webhook
 
-# 6. Tech Stack
+## 6. Tech Stack
 
 Frontend: React.js, Angular, iOS, Android SDK
 
