@@ -2,8 +2,11 @@ Here is the content of the `README.md` file in Markdown format:
 
 ```markdown
 # SystemDesign
+
 ✅ Step-by-Step OAuth 2.0 Login with Google
-🔧 0. Pre-Setup (One-Time by Quora Developer)
+
+#### 🔧 0. Pre-Setup (One-Time by Quora Developer)
+
 Before any user login happens, Quora registers their app with Google:
 
 Quora creates an OAuth Client ID and Client Secret in the Google Cloud Console.
@@ -20,7 +23,7 @@ client_id
 
 client_secret
 
-🧑‍💻 1. User Clicks "Login with Google" on Quora
+### 🧑‍💻 1. User Clicks "Login with Google" on Quora
 You go to Quora, click:
 👉 "Continue with Google"
 
@@ -33,21 +36,24 @@ GET https://accounts.google.com/o/oauth2/v2/auth?
   &scope=email%20profile
   &state=xyz123
 
-🔐 2. Google Shows Login Screen (if not already logged in)
+### 🔐 2. Google Shows Login Screen (if not already logged in)
+
 You see Google’s login page (hosted on google.com) if you're not already logged in.
 
 You enter your Google username and password.
 
 This information never goes to Quora — only to Google.
 
-🧾 3. Google Verifies and Authenticates
+### 🧾 3. Google Verifies and Authenticates
+
 If your credentials are correct:
 
 Google authenticates you.
 
 Proceeds to ask for consent.
 
-🔒 4. Consent Screen (Authorization)
+### 🔒 4. Consent Screen (Authorization)
+
 If it's your first time logging in to Quora with Google:
 
 Google shows a Consent Screen with:
@@ -58,7 +64,8 @@ Scopes requested (e.g., profile, email)
 
 You click Allow to proceed.
 
-📦 5. Google Redirects Back to Quora with Authorization Code
+### 📦 5. Google Redirects Back to Quora with Authorization Code
+
 After you allow, Google redirects your browser to the redirect URI Quora registered:
 
 https://quora.com/oauth/callback?code=abc123&state=xyz123
@@ -66,7 +73,8 @@ The code parameter is a temporary auth code
 
 The state parameter is a CSRF protection measure (should match what Quora originally sent)
 
-🔁 6. Quora Exchanges Code for Tokens (Server-to-Server)
+### 🔁 6. Quora Exchanges Code for Tokens (Server-to-Server)
+
 Now, Quora’s backend server makes a secure POST request to Google’s token endpoint:
 
 POST https://oauth2.googleapis.com/token
@@ -78,7 +86,8 @@ client_id=QUORA_CLIENT_ID
 &redirect_uri=https://quora.com/oauth/callback
 &grant_type=authorization_code
 
-📥 7. Google Responds with Tokens
+### 📥 7. Google Responds with Tokens
+
 Google responds with:
 
 {
@@ -99,7 +108,8 @@ refresh_token: Can be used to get new access tokens later (long-lived)
 
 expires_in: Time in seconds (e.g., 3600s = 1 hour)
 
-📤 8. Quora Uses Access Token to Get Your Profile
+### 📤 8. Quora Uses Access Token to Get Your Profile
+
 Quora now uses the access_token to call Google’s UserInfo API:
 
 GET https://www.googleapis.com/oauth2/v3/userinfo
@@ -113,14 +123,16 @@ Google responds with your basic profile info:
   "picture": "https://lh3.googleusercontent.com/a/..."
 }
 
-🙋‍♀️ 9. Quora Logs You In
+### 🙋‍♀️ 9. Quora Logs You In
+
 If this is your first time: Quora creates a new account with your Google info.
 
 If you already have an account: Quora logs you in.
 
 Your session is now active 🎉
 
-🔄 10. (Optional) Later When Access Token Expires
+### 🔄 10. (Optional) Later When Access Token Expires
+
 When the access token expires (usually in 1 hour):
 
 Quora sends the refresh_token to Google to get a new access token in the background — without user involvement.
