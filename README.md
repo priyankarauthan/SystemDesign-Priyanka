@@ -1,3 +1,6 @@
+Here is the content of the `README.md` file in Markdown format:
+
+```markdown
 # SystemDesign
 ✅ Step-by-Step OAuth 2.0 Login with Google
 🔧 0. Pre-Setup (One-Time by Quora Developer)
@@ -23,15 +26,13 @@ You go to Quora, click:
 
 Your browser is redirected to Google’s OAuth 2.0 authorization endpoint:
 
-h
-Copy
-Edit
 GET https://accounts.google.com/o/oauth2/v2/auth?
   client_id=QUORA_CLIENT_ID
   &redirect_uri=https://quora.com/oauth/callback
   &response_type=code
   &scope=email%20profile
   &state=xyz123
+
 🔐 2. Google Shows Login Screen (if not already logged in)
 You see Google’s login page (hosted on google.com) if you're not already logged in.
 
@@ -60,9 +61,6 @@ You click Allow to proceed.
 📦 5. Google Redirects Back to Quora with Authorization Code
 After you allow, Google redirects your browser to the redirect URI Quora registered:
 
-perl
-Copy
-Edit
 https://quora.com/oauth/callback?code=abc123&state=xyz123
 The code parameter is a temporary auth code
 
@@ -71,9 +69,6 @@ The state parameter is a CSRF protection measure (should match what Quora origin
 🔁 6. Quora Exchanges Code for Tokens (Server-to-Server)
 Now, Quora’s backend server makes a secure POST request to Google’s token endpoint:
 
-http
-Copy
-Edit
 POST https://oauth2.googleapis.com/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -82,12 +77,10 @@ client_id=QUORA_CLIENT_ID
 &code=abc123
 &redirect_uri=https://quora.com/oauth/callback
 &grant_type=authorization_code
+
 📥 7. Google Responds with Tokens
 Google responds with:
 
-json
-Copy
-Edit
 {
   "access_token": "ya29.a0AfH6SMABC123...",
   "expires_in": 3599,
@@ -96,6 +89,7 @@ Edit
   "token_type": "Bearer",
   "id_token": "eyJhbGciOiJSUzI1NiIsIn..."
 }
+
 Breakdown:
 access_token: Short-lived token to access user info
 
@@ -108,22 +102,17 @@ expires_in: Time in seconds (e.g., 3600s = 1 hour)
 📤 8. Quora Uses Access Token to Get Your Profile
 Quora now uses the access_token to call Google’s UserInfo API:
 
-http
-Copy
-Edit
 GET https://www.googleapis.com/oauth2/v3/userinfo
 Authorization: Bearer ya29.a0AfH6SMABC123...
 Google responds with your basic profile info:
 
-json
-Copy
-Edit
 {
   "sub": "1234567890",
   "name": "Priyanka Rauthan",
   "email": "priyanka@gmail.com",
   "picture": "https://lh3.googleusercontent.com/a/..."
 }
+
 🙋‍♀️ 9. Quora Logs You In
 If this is your first time: Quora creates a new account with your Google info.
 
@@ -136,9 +125,6 @@ When the access token expires (usually in 1 hour):
 
 Quora sends the refresh_token to Google to get a new access token in the background — without user involvement.
 
-h
-Copy
-Edit
 POST https://oauth2.googleapis.com/token
 
 client_id=...
@@ -146,30 +132,11 @@ client_id=...
 &refresh_token=1//0fghijklmNOPQ...
 &grant_type=refresh_token
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # High-Level Architecture for a Payment Gateway
 
 ## 1. Overview
 
-A Payment Gateway is a financial service that facilitates online transactions by securely transferring payment information between merchants, customers, banks, and payment processors. It ensures encryption, fraud detection, and regulatory compliance.
+A Payment Gateway is a financial service that facilitates online transactions by securely transferring payment information between merchants, customers, banks, and payment processors. It ensures [...]
 
 ## 2. Key Features
 
@@ -309,3 +276,6 @@ Messaging & Event Streaming: Kafka, RabbitMQ
 Security: OAuth2, JWT, PCI-DSS Compliance
 
 Cloud & DevOps: AWS/GCP/Azure, Kubernetes, Docker
+```
+
+Let me know how else I can assist!
