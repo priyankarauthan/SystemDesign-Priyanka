@@ -1,5 +1,126 @@
 Here is the content of the `README.md` file in Markdown format:
 
+#### 🔑Service A never hard-codes Service B’s address.
+
+
+Instead, it uses Service Discovery (often with a Load Balancer).
+
+🧭 Option 1: Service Discovery (Most Common)
+🔹 How it works
+
+Service B instances register themselves with a Service Registry
+
+Service A asks the registry:
+👉 “Where is Service B?”
+
+Registry returns one or more live instances
+
+Request is sent to one of them
+
+🗂 Popular Service Registries
+
+Netflix Eureka
+
+Consul
+
+Apache Zookeeper
+
+🔁 Two types of discovery
+1️⃣ Client-Side Discovery
+
+Service A decides which instance to call.
+
+Service A → Service Registry → Service B instance
+
+
+✔ Used by Netflix Eureka
+❌ Client has more responsibility
+
+2️⃣ Server-Side Discovery
+
+Service A calls a load balancer, not the instance directly.
+
+Service A → Load Balancer → Service B instance
+
+
+✔ Cleaner for clients
+✔ Common in cloud setups
+
+☁️ Option 2: Kubernetes (Most Modern Way)
+
+If you’re using Kubernetes, this problem is already solved.
+
+🔹 How?
+
+Each service gets a DNS name
+
+Kubernetes does service discovery automatically
+
+Example:
+
+http://service-b.default.svc.cluster.local
+
+
+Service A just calls:
+
+http://service-b
+
+
+Behind the scenes:
+
+Kubernetes DNS
+
+kube-proxy
+
+Load balancing
+
+✔ No Eureka needed
+✔ Automatic scaling
+✔ Industry standard today
+
+🌐 Option 3: API Gateway (External Calls)
+
+When external clients call your system:
+
+Client → API Gateway → Service A → Service B
+
+
+Common gateways:
+
+Spring Cloud Gateway
+
+Kong
+
+Gateway handles:
+
+Routing
+
+Load balancing
+
+Auth
+
+Rate limiting
+
+⚙️ Typical Spring Boot Setup (Real Projects)
+Without Kubernetes
+Spring Boot + Eureka + LoadBalancer + Feign
+
+With Kubernetes (Recommended)
+Spring Boot + Kubernetes Service + DNS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```markdown
 # SystemDesign
 
