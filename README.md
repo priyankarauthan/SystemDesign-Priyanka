@@ -1,5 +1,10 @@
 Here is the content of the `README.md` file in Markdown format:
 
+- [Design Patterns](#design-pattern) 
+- [Sealed Classes](#sealed-classes) 
+- [Records](#records) 
+- [CompletableFuture](#completablefuture) 
+
 
 
 # DESIGN PATTERNS:-
