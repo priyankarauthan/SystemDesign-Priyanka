@@ -1,5 +1,143 @@
 Here is the content of the `README.md` file in Markdown format:
 
+
+
+# DESIGN PATTERNS:-
+## A) Facade Design Pattern
+
+The Facade Design Pattern is a structural design pattern that provides a simple interface to a complex subsystem.
+
+Instead of interacting with multiple classes directly, the client interacts with one facade class, which internally manages the complexity.
+## When to Use Facade Pattern
+
+System has many complex classes
+
+You want to simplify client interaction
+
+You want to reduce dependencies between subsystems
+
+## Real Life Example
+
+Think of ordering food from a restaurant app.
+
+**Without facade:** 
+
+Customer
+   ↓
+Restaurant
+Delivery Partner
+Payment System
+Notification Service
+
+Customer must interact with many services.
+
+**With facade:**
+
+Customer
+   ↓
+FoodOrderFacade
+   ↓
+Restaurant + Delivery + Payment + Notification
+
+Customer interacts with only one interface.
+
+```
+Step 1: Subsystem Classes
+class CPU {
+    void start() {
+        System.out.println("CPU started");
+    }
+}
+
+class Memory {
+    void load() {
+        System.out.println("Memory loaded");
+    }
+}
+
+class HardDrive {
+    void read() {
+        System.out.println("Reading data from Hard Drive");
+    }
+}
+Step 2: Facade Class
+class ComputerFacade {
+
+    private CPU cpu;
+    private Memory memory;
+    private HardDrive hardDrive;
+
+    public ComputerFacade() {
+        cpu = new CPU();
+        memory = new Memory();
+        hardDrive = new HardDrive();
+    }
+
+    public void startComputer() {
+        cpu.start();
+        memory.load();
+        hardDrive.read();
+    }
+}
+Step 3: Client Code
+public class Main {
+
+    public static void main(String[] args) {
+
+        ComputerFacade computer = new ComputerFacade();
+        computer.startComputer();
+    }
+}
+```
+**Output**
+
+CPU started
+Memory loaded
+Reading data from Hard Drive
+
+The client interacts only with ComputerFacade.
+
+## Advantages
+
+Reduces system complexity
+
+Improves code readability
+
+Loose coupling between client and subsystem
+
+Simplifies API usage
+
+## Disadvantages
+
+Facade can become a god class if too many responsibilities are added.
+
+**Real-world Examples in Java**
+
+Common places where Facade pattern is used:
+
+SLF4J logging framework
+
+Spring Framework (JdbcTemplate)
+
+Hibernate Session API
+
+**Example in Spring:**
+
+JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+JdbcTemplate acts as a facade for complex JDBC operations.
+
+## When to Use Facade Pattern
+
+
+
+System has many complex classes
+
+You want to simplify client interaction
+
+You want to reduce dependencies between subsystems
+
+
 #### 🔑Service A never hard-codes Service B’s address.
 
 
